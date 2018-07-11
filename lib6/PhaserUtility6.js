@@ -34,4 +34,66 @@ export default class PhaserUtility {
     static getRndIntInRange(min, max) {
         return Math.floor((Math.random() * ((max - min) + 1)) + min);
     }
+
+    /**
+     * Add a tween to be played on start launch.
+     * @param {Object} game
+     * @param {Object} object
+     * @param {boolean} vertical Vertical or horizontal tween?
+     * @param {boolean} positive Come from bottom/ top or right/ left?
+     * @param {Number} duration Tween duration.
+     * */
+    static addIntroTweenShui(game, object, vertical, positive, duration) {
+        object.defaultPosition = object.shui.position.clone();
+
+        if (vertical) {
+            if (positive) {
+                object.shui.position.y -= object.height * 3;
+            } else {
+                object.shui.position.y += object.height * 3;
+            }
+        } else if (!vertical) {
+            if (positive) {
+                object.shui.position.x -= object.width * 3;
+            } else {
+                object.shui.position.x += object.width * 3;
+            }
+        }
+
+        return game.add.tween(object.shui.position).to(
+            {x: object.defaultPosition.x, y: object.defaultPosition.y},
+            duration, Phaser.Easing.Back.Out, true, 0, 0, false
+        );
+    }
+
+    /**
+     * Add a tween to be played on start launch.
+     * @param {Object} game
+     * @param {Object} object
+     * @param {boolean} vertical Vertical or horizontal tween?
+     * @param {boolean} positive Come from bottom/ top or right/ left?
+     * @param {Number} duration Tween duration.
+     * */
+    static addIntroTween(game, object, vertical, positive, duration) {
+        object.defaultPosition = object.position.clone();
+
+        if (vertical) {
+            if (positive) {
+                object.position.y -= object.height * 3;
+            } else {
+                object.position.y += object.height * 3;
+            }
+        } else if (!vertical) {
+            if (positive) {
+                object.position.x -= object.width * 3;
+            } else {
+                object.position.x += object.width * 3;
+            }
+        }
+
+        return game.add.tween(object.position).to(
+            {x: object.defaultPosition.x, y: object.defaultPosition.y},
+            duration, Phaser.Easing.Back.Out, true, 0, 0, false
+        );
+    }
 }
