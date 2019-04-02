@@ -1,5 +1,6 @@
 {
     "name": "phaser-utility",
     "description": "",
-    "author": "Raheel Yawar <raheelyawar@gmail.com>"
+    "author": "Raheel Yawar <raheelyawar@gmail.com>",
+    "main": "lib/PhaserUtility.js"
 }
